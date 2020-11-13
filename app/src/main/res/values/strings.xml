@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CloseWindow</string>
+    <string name="lock">锁屏</string>
+</resources>

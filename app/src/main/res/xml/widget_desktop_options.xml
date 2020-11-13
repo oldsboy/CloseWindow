@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="40dp"
+    android:minHeight="40dp"
+    android:minResizeHeight="40dp"
+    android:minResizeWidth="40dp"
+    android:updatePeriodMillis="86400000"
+    android:previewImage="@drawable/ic_lock"
+    android:initialLayout="@layout/lock_layout"
+    android:resizeMode="none"
+    android:widgetCategory="home_screen|keyguard" />
+
+<!--    android:initialKeyguardLayout="@layout/example_keyguard"-->
