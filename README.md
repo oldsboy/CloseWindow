@@ -1,2 +1,3 @@
 # CloseWindow
 android桌面息屏小工具
+长按Android桌面调用此工具
