@@ -6,7 +6,7 @@
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView
+    <ImageButton
         android:id="@+id/img_lock"
         android:src="@drawable/press_icon"
         android:layout_marginTop="5dp"
@@ -14,6 +14,7 @@
         android:layout_height="40dp" />
 
     <TextView
+        android:id="@+id/tv"
         android:text="@string/lock"
         android:layout_marginTop="60dp"
         android:gravity="center"

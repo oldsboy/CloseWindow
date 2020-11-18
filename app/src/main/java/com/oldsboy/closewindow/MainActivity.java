@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setContentView(R.layout.activity_main);
+        this.setContentView(R.layout.lock_layout);
 
         ComponentName adminReceiver = new ComponentName(this, AdminReceiver.class);
         DevicePolicyManager systemService = (DevicePolicyManager) getSystemService(DEVICE_POLICY_SERVICE);

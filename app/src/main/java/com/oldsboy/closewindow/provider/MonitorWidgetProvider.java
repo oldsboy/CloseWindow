@@ -1,6 +1,5 @@
 package com.oldsboy.closewindow.provider;
 
-import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.app.admin.DevicePolicyManager;
 import android.appwidget.AppWidgetManager;
@@ -10,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.PowerManager;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
@@ -46,6 +44,7 @@ public class MonitorWidgetProvider extends AppWidgetProvider {
         if (!systemService.isAdminActive(adminReceiver)){
             Toast.makeText(context, "需要先进入app进行授权", Toast.LENGTH_SHORT).show();
         }else {
+            Log.d(TAG, "closeWindow: ");
             new Handler().postDelayed(systemService::lockNow, 300);
         }
     }
@@ -56,9 +55,13 @@ public class MonitorWidgetProvider extends AppWidgetProvider {
 
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.lock_layout);
 
-        remoteViews.setImageViewResource(R.id.img_lock, R.drawable.ic_lock);
+        remoteViews.setImageViewResource(R.id.img_lock, R.drawable.press_icon);
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, new Intent(BTN_CLICK_ACTION), 0);
+        Intent intent = new Intent(BTN_CLICK_ACTION);
+        intent.setClass(context, MonitorWidgetProvider.class);
+        intent.setFlags(intent.getFlags()| 0x01000000);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
         remoteViews.setOnClickPendingIntent(R.id.img_lock, pendingIntent);
 
         appWidgetManager.updateAppWidget(appWidgetIds, remoteViews);
