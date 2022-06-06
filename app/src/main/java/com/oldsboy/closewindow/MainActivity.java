@@ -39,9 +39,14 @@ public class MainActivity extends AppCompatActivity {
         if (!requestLockAdmins(systemService, adminReceiver)){
             Toast.makeText(this, "点击按钮申请权限后可以息屏", Toast.LENGTH_SHORT).show();
         }
-        ((TextView)this.findViewById(R.id.tv)).setOnClickListener(v -> {
+        Log.d(TAG, "onCreate: ");
+        (this.findViewById(R.id.container)).setOnClickListener(v -> {
+            Log.d(TAG, "onCreate: 点击");
             if (requestLockAdmins(systemService, adminReceiver)){
+                Log.d(TAG, "onCreate: 触发锁屏");
                 systemService.lockNow();
+            }else {
+                Log.d(TAG, "onCreate: 未获取权限");
             }
         });
     }

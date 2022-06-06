@@ -29,6 +29,7 @@ public class MonitorWidgetProvider extends AppWidgetProvider {
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
 
+        Log.d(TAG, "onReceive: 收到点击：" + intent.getAction());
         if (intent != null && intent.getAction() != null) {
             Log.d(TAG, "onReceive: 收到广播通知：" + intent.getAction());
             switch (intent.getAction()) {
@@ -61,8 +62,10 @@ public class MonitorWidgetProvider extends AppWidgetProvider {
         intent.setClass(context, MonitorWidgetProvider.class);
         intent.setFlags(intent.getFlags()| 0x01000000);
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-        remoteViews.setOnClickPendingIntent(R.id.img_lock, pendingIntent);
+        PendingIntent pendingIntent2 = PendingIntent.getBroadcast(context, 0, intent, 0);
+        remoteViews.setOnClickPendingIntent(R.id.container, pendingIntent2);
+        remoteViews.setOnClickPendingIntent(R.id.img_lock, pendingIntent2);
+        remoteViews.setOnClickPendingIntent(R.id.tv, pendingIntent2);
 
         appWidgetManager.updateAppWidget(appWidgetIds, remoteViews);
         Log.d(TAG, "onUpdate: 配置点击事件完成");
